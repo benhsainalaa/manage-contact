@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\Contact;
 use Illuminate\Http\Request;
+use DateTime;
+use Log;
 
 class ContactController extends Controller {
     

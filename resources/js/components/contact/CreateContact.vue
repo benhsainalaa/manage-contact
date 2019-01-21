@@ -34,7 +34,7 @@
                       <span class="required">*</span>
                     </label>
                     <div class=" col-xl-12 col-md-9">
-                      <input type="text" class="form-control" v-model="contact.first_name" name="first_name" placeholder="" required=""
+                      <input type="text" class="form-control" v-model="contact.first_name" name="first_name" id="first_name" placeholder="" required=""
                         >
                     </div>
                   </div>                 
@@ -47,7 +47,7 @@
                       <span class="required">*</span>
                     </label>
                     <div class=" col-xl-12 col-md-9">
-                      <input type="text" class="form-control" name="last_name" v-model="contact.last_name" placeholder="" required=""
+                      <input type="text" class="form-control" name="last_name" id="last_name" v-model="contact.last_name" placeholder="" required=""
                         >
                     </div>
                   </div>
@@ -61,7 +61,8 @@
                       <span class="input-group-addon">
                         <i class="icon wb-calendar" aria-hidden="true"></i>
                       </span>
-                      <input type="text" class="form-control" v-model="contact.birth_date" data-provide="datepicker" id="datepicker2" name="date2" data-plugin="datepicker">
+                      <datepicker :format="customFormatter" type="date" v-model="contact.birth_date" name="uniquename"></datepicker>
+
                   </div>
                   </div>
                   </div>
@@ -165,7 +166,9 @@
   </div>
 </template>
 <script>
+  import Datepicker from 'vuejs-datepicker';
   export default {
+
     data(){
 
         return{
@@ -173,10 +176,20 @@
           
         }
     },
+    components: {
+    Datepicker
+    },
     methods: {
-      addContact(){
-        //alert($('#datepicker').val());
-        //this.contact.birth_date = $('#datepicker').val();
+        customFormatter(date) {
+        
+        var d = new Date(date).toJSON().slice(0, 10);
+        return d;
+        //return moment(date).format('MMMM Do YYYY, h:mm:ss a');
+              },
+  
+
+        addContact() {
+        this.contact.birth_date = this.customFormatter(this.contact.birth_date);
         let uri = 'http://localhost:8000/api/contacts/create';
         this.axios.post(uri, this.contact).then((response) => {
           this.$router.push({name: 'DisplayContact'})

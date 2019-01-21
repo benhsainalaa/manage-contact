@@ -16,6 +16,9 @@ Auth::routes();
 Route::get('/manage', function () {
     return view('index');
 });
+Route::get('/logout', 'Auth\LoginController@logout')->name('logout' );
+
+
 Route::middleware('auth:api')->get('/', function (Request $request) {
 //Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['prefix' => 'contacts'], function() {

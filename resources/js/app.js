@@ -12,7 +12,8 @@ import CreateContact from './components/contact/CreateContact.vue';
 import DisplayContact from './components/contact/DisplayContact.vue';
 import EditContact from './components/contact/EditContact.vue';
 import ShowContact from './components/contact/ShowContact.vue';
-
+import Datepicker from 'vuejs-datepicker';
+Vue.use(Datepicker);
 
 const routes = [
   {
@@ -37,6 +38,14 @@ const routes = [
    }
  
 ];
+
+export default {
+  
+  components: {
+    Datepicker
+  }
+  
+}
 
 const router = new VueRouter({ mode: 'history', routes: routes});
 new Vue(Vue.util.extend({ router }, App)).$mount('#app');

@@ -5,7 +5,7 @@
     <h1>Contact Details</h1>
        <form id="addContactForm"  v-on:submit.prevent="updateContact" class="Form-Full" autocomplete="off">
         
-mlklmklmkmlk
+
            
             
                 

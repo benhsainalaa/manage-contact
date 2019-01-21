@@ -7,6 +7,14 @@ tfoot input {
     .Form-Full .form-horizontal .form-control-label {
     text-align: inherit !important;
 }
+
+#last_name {
+	text-transform: capitalize;
+}
+#first_name {
+	text-transform: capitalize;
+}
+
 .col-lg-generer1 {
     -ms-flex: 0 0 33.3333333333%;
     flex: 0 0 33.3333333333%;
