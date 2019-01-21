@@ -27,7 +27,10 @@
                           required=""/>
                       </div>
                     </div>
-                  </div>    
+                  </div>   
+                  
+                  
+                  
                   <div class="form-group row">,
         
                     <label class="col-xl-12 col-md-3 form-control-label">First Name
@@ -166,6 +169,8 @@
   </div>
 </template>
 <script>
+  import Vuelidate from 'vuelidate';
+  import { required, minLength, helpers, alpha, email } from 'vuelidate/lib/validators';
   import Datepicker from 'vuejs-datepicker';
   export default {
 
@@ -176,6 +181,9 @@
           
         }
     },
+
+    
+
     components: {
     Datepicker
     },
@@ -184,15 +192,17 @@
         
         var d = new Date(date).toJSON().slice(0, 10);
         return d;
-        //return moment(date).format('MMMM Do YYYY, h:mm:ss a');
+       
               },
   
 
         addContact() {
+        
         this.contact.birth_date = this.customFormatter(this.contact.birth_date);
         let uri = 'http://localhost:8000/api/contacts/create';
         this.axios.post(uri, this.contact).then((response) => {
           this.$router.push({name: 'DisplayContact'})
+        
         })
     }
   }

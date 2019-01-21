@@ -6,7 +6,8 @@ Vue.use(VueRouter);
 import VueAxios from 'vue-axios';
 import axios from 'axios';
 Vue.use(VueAxios, axios);
-
+import Vuelidate from 'vuelidate'
+Vue.use(Vuelidate)
 import App from './App.vue';
 import CreateContact from './components/contact/CreateContact.vue';
 import DisplayContact from './components/contact/DisplayContact.vue';
